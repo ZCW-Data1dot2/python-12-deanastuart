@@ -9,40 +9,47 @@ class Parity(enum.Enum):
 
 def gen_list(start: int, stop: int, parity: Parity) -> List[int]:
     """
-    Oh no some evil developer decided not to write docstrings. Maybe you can use the test cases to decipher
-    what this method was supposed to do. Hey if you do, maybe you could do some good in this world by
-    updating this here docstring to something useful.
 
+    Return an even or odd of list in range of start and stop depending on the parity.
     :param start:
     :param stop:
     :param parity:
     :return:
     """
-    pass
-
+    if parity == Parity.ODD:
+        x = [i for i in range(start,stop) if i % 2 != 0]
+    elif parity == Parity.EVEN:
+        x = [i for i in range(start,stop) if i % 2 == 0]
+    return x
 
 def gen_dict(start: int, stop: int, strategy: Callable) -> Dict:
     """
-    Oh no some evil developer decided not to write docstrings. Maybe you can use the test cases to decipher
-    what this method was supposed to do. Hey if you do, maybe you could do some good in this world by
-    updating this here docstring to something useful.
-
+    For range of start to stop create a dictionary of integer keys of the range and values of the strategy on the value of the range
 
     :param start:
     :param stop:
     :param strategy:
     :return:
     """
-    pass
+    dict = {}
+    for i in range(start,stop):
+        dict[i] = strategy(i)
+    return dict
+
 
 
 def gen_set(val_in: str) -> Set:
     """
-    Oh no some evil developer decided not to write docstrings. Maybe you can use the test cases to decipher
-    what this method was supposed to do. Hey if you do, maybe you could do some good in this world by
-    updating this here docstring to something useful.
-
+    return a set of capital letters of the lowercase letters in a string from end of the string to the front
     :param val_in:
     :return:
     """
-    pass
+    x = set()
+    str1 = str(val_in)
+    [x.add(i.capitalize()) for i in str1 if i.islower() is True]
+    return x
+
+    #version not as list comprehension...
+    # for i in str1:
+    #     if i.islower() is True:
+    #         x.add(i.capitalize())
